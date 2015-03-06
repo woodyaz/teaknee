@@ -1,0 +1,20 @@
+<html>
+<title>Tea Knee, the best damn url shortener, ever!</title>
+<body>
+<h1>Sup homies</h1>
+<h3>Add a domain</h3>
+<br />
+<form method="post" action="/add">
+	domain: </br>
+	<input type="text" name="domain">
+	<br>
+	<input type="submit">
+</form>
+<% $domains.each do |d| %>
+	<p>id: <%= d["id"]%></p>
+	<p>domain: <%= d["domain"] %></p>
+	<% @short_url = "http://#{request.host}:#{request.port}/go/#{d['id']}"%>
+	<p><a href = "<%=@short_url%>"><%=@short_url%></a></p><br />
+<% end %>
+<body>
+</html>

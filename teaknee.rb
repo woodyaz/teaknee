@@ -1,10 +1,12 @@
 require 'sinatra'
+require 'haml'
 
 helpers do
 	$domains = Array.new
 
 	def add_domain(domain)
 		id = $domains.count + 1
+		puts domain
 		$domains << {"id" => id, "domain" => domain }
 		true
 	end
@@ -15,7 +17,7 @@ helpers do
 end
 
 get '/' do
-	"<h1>Sup homies</h1>"
+	erb :index		
 end
 
 post '/add' do
