@@ -1,5 +1,4 @@
 require 'sinatra'
-require 'haml'
 
 helpers do
 	$domains = Array.new
@@ -12,7 +11,8 @@ helpers do
 	end
 
 	def get_by_id(id)
-		$domains.select {|domain| domain["id"] == id }
+		res = $domains.select {|domain| domain["id"] == id }
+		return res["domain"].to_s
 	end
 end
 
@@ -22,19 +22,14 @@ end
 
 post '/add' do
 	if add_domain(params[:domain])
-		status 201
+		redirect "/"
 	else
 		status 500
 		"Something went wrong"
 	end
 end	
 
-get '/go/:id' do 
-	domain = get_by_id(params[:id])
-	if domain 
-		redirect "http://#{domain}"
-	else
-		status 404
-		"No domain found for that id"
-	end
+get '/go/:id' do
+	res = get_by_id(params[:id])
+	puts res
 end

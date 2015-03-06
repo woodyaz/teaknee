@@ -9,7 +9,7 @@ describe "TeaKnee, the best damn url shortener, ever!" do
 
 	it "adds a new url" do
 		post '/add', "domain" => "www.doctorwho.tv"
-		expect(last_response).to be_created
+		expect(last_response).to be_redirect
 	end
 
 	it "redirects based on id" do
