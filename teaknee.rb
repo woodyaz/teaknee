@@ -6,13 +6,13 @@ helpers do
 	def add_domain(domain)
 		id = $domains.count + 1
 		puts domain
-		$domains << {"id" => id, "domain" => domain }
+		$domains << {"id" => id.to_s, "domain" => domain }
 		true
 	end
 
 	def get_by_id(id)
-		res = $domains.select {|domain| domain["id"] == id }
-		return res["domain"].to_s
+    puts "Id: #{id}"
+    $domains.find {|d| d["id"] == id.to_s }
 	end
 end
 
@@ -30,6 +30,10 @@ post '/add' do
 end	
 
 get '/go/:id' do
-	res = get_by_id(params[:id])
-	puts res
+  result = get_by_id(params[:id])
+  if result 
+    redirect "http://#{result["domain"]}"
+  else
+    puts "Domain not found."
+  end
 end

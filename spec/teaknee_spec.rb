@@ -13,7 +13,6 @@ describe "TeaKnee, the best damn url shortener, ever!" do
 	end
 
 	it "redirects based on id" do
-		post '/add', "domain" => "www.doctorwho.tv"
 		get '/go/1'
 		expect(last_response).to be_redirect
 	end
