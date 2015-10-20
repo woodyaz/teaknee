@@ -1,5 +1,6 @@
-source "https://www.rubygems.org"
+source 'https://rubygems.org'
 
-gem 'sinatra'
-gem 'rspec'
 gem 'rack-test'
+gem 'rspec'
+gem 'rubocop'
+gem 'sinatra'

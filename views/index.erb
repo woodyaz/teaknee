@@ -10,9 +10,9 @@
 	<br>
 	<input type="submit">
 </form>
-<% $domains.each do |d| %>
-	<p>id: <%= d["id"]%></p>
-	<p>domain: <%= d["domain"] %></p>
+<% @domains.each do |d| %>
+	<p>id: <%= d['id']%></p>
+	<p>domain: <%= d['domain'] %></p>
 	<% @short_url = "http://#{request.host}:#{request.port}/go/#{d['id']}"%>
 	<p><a href = "<%=@short_url%>"><%=@short_url%></a></p><br />
 <% end %>
